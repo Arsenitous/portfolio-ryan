@@ -8,3 +8,4 @@ export { personalInfo }   from './personal';
 export { projects }       from './projects';
 export { workExperience } from './experience';
 export { hobbies }        from './hobbies';
+export { education }      from './education';

@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage          from './pages/HomePage';
 import ProjectsPage      from './pages/ProjectsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
+import AboutPage         from './pages/AboutPage';
+import ContactPage       from './pages/ContactPage';
 
 /* ── Global animation styles (shared across all pages) ─────────────────────── */
 const globalStyles = `
@@ -57,8 +59,10 @@ export default function App() {
       <div className="bg-[#0f172a] text-slate-100 min-h-screen font-sans antialiased">
         <Routes>
           <Route path="/"                  element={<HomePage />} />
+          <Route path="/about"             element={<AboutPage />} />
           <Route path="/projects"          element={<ProjectsPage />} />
           <Route path="/projects/:slug"    element={<ProjectDetailPage />} />
+          <Route path="/contact"           element={<ContactPage />} />
         </Routes>
       </div>
     </>
