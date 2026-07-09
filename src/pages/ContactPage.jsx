@@ -5,7 +5,7 @@ import {
   ChevronRight, User, AtSign, FileText,
   CheckCircle2
 } from 'lucide-react';
-import { FacebookIcon, InstagramIcon, GmailIcon } from '../components/icons';
+import { FacebookIcon, InstagramIcon, GmailIcon, LinkedInIcon } from '../components/icons';
 import Navbar from '../components/Navbar';
 import { useScrollFade } from '../hooks/useScrollFade';
 
@@ -46,6 +46,15 @@ const socialLinks = [
     icon:    <InstagramIcon size={24} />,
     color:   'hover:border-pink-500/40 hover:bg-pink-500/5',
     iconBg:  'bg-pink-500/10 text-pink-400',
+  },
+  {
+    id:      'contact-linkedin',
+    label:   'LinkedIn',
+    value:   'ryan-febrianto',
+    href:    'https://www.linkedin.com/in/ryan-febrianto-b10524315/',
+    icon:    <LinkedInIcon size={24} />,
+    color:   'hover:border-blue-500/40 hover:bg-blue-500/5',
+    iconBg:  'bg-blue-500/10 text-blue-400',
   },
 ];
 
@@ -115,7 +124,7 @@ export default function ContactPage() {
 
             <h2 className="text-lg font-bold text-white fade-up">Find me on</h2>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
               {socialLinks.map((link, idx) => (
                 <a
                   key={link.id}

@@ -5,6 +5,7 @@ import {
   BookOpen, Briefcase, Crown, Gamepad2, Waves,
   GraduationCap, ExternalLink, ChevronRight
 } from 'lucide-react';
+import { LinkedInIcon } from '../components/icons';
 import Navbar from '../components/Navbar';
 import { personalInfo, hobbies, workExperience, education } from '../data';
 import { useScrollFade } from '../hooks/useScrollFade';
@@ -78,14 +79,14 @@ export default function AboutPage() {
               <User size={14} /> Personal Profile
             </div>
 
-            <div className="grid md:grid-cols-5 gap-10 items-start">
+            <div className="grid md:grid-cols-5 gap-10 items-start md:pb-0 pb-12">
 
               {/* Photo */}
-              <div className="md:col-span-2 flex justify-center fade-up fade-delay-1">
+              <div className="md:col-span-2 flex flex-col items-center gap-4 fade-up fade-delay-1">
                 <div className="relative">
                   {/* Glow ring */}
                   <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 blur-xl" />
-                  <div className="relative w-64 md:w-72 rounded-2xl overflow-hidden ring-2 ring-emerald-400/30 shadow-2xl shadow-emerald-500/20">
+                  <div className="relative w-80 md:w-96 rounded-2xl overflow-hidden ring-2 ring-emerald-400/30 shadow-2xl shadow-emerald-500/20">
                     <img
                       src={ryanPhoto}
                       alt="Ryan Febrianto"
@@ -97,6 +98,16 @@ export default function AboutPage() {
                     ● Open to Opportunities
                   </div>
                 </div>
+                {/* LinkedIn Button */}
+                <a
+                  href="https://www.linkedin.com/in/ryan-febrianto-b10524315/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 bg-blue-600/90 hover:bg-blue-500 border border-blue-500/40 text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all hover:-translate-y-0.5 shadow-lg shadow-blue-500/20"
+                >
+                  <LinkedInIcon size={15} />
+                  Connect on LinkedIn
+                </a>
               </div>
 
               {/* Bio + Info */}
