@@ -1,0 +1,27 @@
+Here is the updated blueprint for your multi-page data portfolio website, translated and refined into professional English. This structure uses clear, industry-standard terms that will immediately appeal to tech recruiters and data managers.
+1. Home Page (/ — The Hook & Hub)
+The landing page for recruiters. The core objective is to deliver a powerful first impression (The Hook) and immediately guide them to your work using a highly visible Call to Action (CTA) button.
+•	Content:
+o	A Sharp Hook: A compelling introductory line defining your identity and core data analytics expertise.
+o	Concise Profile Summary: A brief, punchy overview of your technical background, passion for data, and current professional focus.
+o	High-Visibility CTA: A prominent, well-designed button reading "Explore My Data Projects" or "View Portfolio Projects".
+•	Effect: Clicking the CTA button seamlessly routes the recruiter to the project directory page instantly, avoiding unnecessary manual scrolling.
+2. Project Directory (/projects — The Gallery / Classroom Style)
+A dedicated space displaying a clean, structured stream of your published Python, Data Science, and Streamlit applications, optimized for effortless scannability.
+•	Layout Concept (Google Classroom Style):
+o	Top Banner: Menampilkan Project's Category/Domain (Kategori/Bidang Proyek), contohnya: MACHINE LEARNING atau DECISION SUPPORT SYSTEM. Ini bertindak sebagai tema besar kartu (seperti bagian mata pelajaran/tema di Google Classroom).
+o	Card Body (Below Banner): Di bawah banner ini, baru kita tulis Actual Project Name (Nama Spesifik Proyekmu) dengan teks tebal dan besar, contohnya: Iris Flower Classification App atau Thesis Recommendation System using MABAC.Bite-Sized Overview: Beneath the banner sits a bold title and a hyper-focused 1–2 sentence description of the core problem and essential tech stack.
+o	Tech Tags: Clean, minimal labels showing the tools used (e.g., Python, Streamlit, Pandas).
+•	New CTA: Instead of linking directly to the live app, each card features a clean "Read Case Study" or "Project Details" button that navigates to its specific deep-dive page.
+3. Project Detail Page (/projects/project-name — The Deep Dive)
+This is your ultimate value proposition. Rather than just showing working code, this page reads like a professional engineering blog post or tech case study using the P-S-I (Problem - Solution - Impact) framework.
+•	Background & Problem:
+o	Defines the real-world challenge you set out to solve (e.g., streamlining student thesis topic selection using mathematical methodologies).
+•	Dataset & Exploratory Data Analysis (EDA):
+o	Explains where the data was sourced and showcases critical patterns or interesting anomalies you uncovered during initial exploration.
+•	Methodology & Modeling:
+o	Details why you selected a specific algorithm, how the model training workflow was structured in Python, and its final performance metrics (such as accuracy or validation scores).
+•	Impact & Live Links:
+o	Concludes with the practical impact or data insights delivered by your solution.
+o	Features two bold interactive buttons: "Launch Streamlit Live App" and "View GitHub Repository".
+

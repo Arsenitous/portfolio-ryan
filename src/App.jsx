@@ -1,13 +1,13 @@
 import React from 'react';
-import { useScrollFade } from './hooks/useScrollFade';
-import Navbar          from './components/Navbar';
-import HeroSection     from './components/HeroSection';
-import AboutSection    from './components/AboutSection';
-import ProjectsSection from './components/ProjectsSection';
-import ContactSection  from './components/ContactSection';
+import { Routes, Route } from 'react-router-dom';
+import HomePage          from './pages/HomePage';
+import ProjectsPage      from './pages/ProjectsPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
 
-/* ── Global animation styles (shared across all sections) ──────────────────── */
+/* ── Global animation styles (shared across all pages) ─────────────────────── */
 const globalStyles = `
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
   /* Base: hidden + shifted down */
   .fade-up {
     opacity: 0;
@@ -51,18 +51,15 @@ const globalStyles = `
 `;
 
 export default function App() {
-  useScrollFade();
-
   return (
     <>
       <style>{globalStyles}</style>
-
       <div className="bg-[#0f172a] text-slate-100 min-h-screen font-sans antialiased">
-        <Navbar />
-        <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <ContactSection />
+        <Routes>
+          <Route path="/"                  element={<HomePage />} />
+          <Route path="/projects"          element={<ProjectsPage />} />
+          <Route path="/projects/:slug"    element={<ProjectDetailPage />} />
+        </Routes>
       </div>
     </>
   );
