@@ -1,0 +1,35 @@
+1. Customer Churn Prediction 🏦
+This application uses an Artificial Neural Network (ANN) to predict the probability of a bank customer churning (leaving the bank).
+Streamlit : https://annproject-5zctv7sjdshcazkdec6aut.streamlit.app/
+GitHub : https://github.com/Arsenitous/ANN_Project
+
+2. Customer Salary Prediction 💵
+This application uses an Artificial Neural Network (ANN) to predict the Estimated Salary of a bank customer based on their profile.
+Streamlit : https://annproject-awkjbvappya2uvqmmidpnb.streamlit.app/
+Github : https://github.com/Arsenitous/ANN_Project
+
+3. IMDB Movie Review Sentiment Analysis
+Enter a movie review to classify it as positive or negative.
+Streamlit : https://imdb-rnn-project-kiqeizqikaiixrsw6weqvh.streamlit.app/
+Github : https://github.com/Arsenitous/imdb-RNN-Project
+
+4. Next Word Prediction With LSTM And Early Stopping
+Enter the sequence of Words
+Streamlit : https://lstm-project-jftczheines5vusgxbfwdh.streamlit.app/
+Github : https://github.com/Arsenitous/LSTM-Project
+
+5. Student Depression Prediction 🧠
+This application uses an AdaBoost Machine Learning Model to predict the probability of a student experiencing depression based on their demographic, academic, and lifestyle factors.
+Streamlit : https://student-depression-classification-8unsk8k9k93xa6to3ppcvs.streamlit.app/
+GitHub : https://github.com/Arsenitous/Student-Depression-Classification
+
+6. 🛡️ Network Security Prediction App
+Welcome to the Network Security Prediction tool. This application analyzes network data to predict and classify network behaviors.
+Streamlit : https://networksecurity-4fdakzh8a4o9ae54rvutpe.streamlit.app/
+Github : https://github.com/Arsenitous/networksecurity
+
+7. 🎓 Student Math Score Prediction App
+Welcome to the Student Math Score Prediction tool.
+This application uses a Machine Learning model to predict a student's math exam score based on their demographic and academic background.
+Streamlit : https://student-math-prediction-hhxbyr8y8ayrlpneerzzgg.streamlit.app/
+Github : https://github.com/Arsenitous/Student-Math-Prediction
