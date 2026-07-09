@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import {
   User, MapPin, Calendar, Droplets, Heart,
   BookOpen, Briefcase, Crown, Gamepad2, Waves,
-  GraduationCap, ExternalLink, ChevronRight
+  GraduationCap, ExternalLink, ChevronRight, Mail
 } from 'lucide-react';
-import { LinkedInIcon } from '../components/icons';
 import Navbar from '../components/Navbar';
 import { personalInfo, hobbies, workExperience, education } from '../data';
 import { useScrollFade } from '../hooks/useScrollFade';
@@ -14,28 +13,28 @@ import ryanPhoto from '../assets/Ryan-W (2).png';
 /* ── Hobby icons mapping ────────────────────────────────────────────────────── */
 const hobbyConfig = [
   {
-    icon:    <Crown size={32} />,
-    emoji:   '♟️',
-    color:   'from-amber-500 to-yellow-500',
-    bg:      'bg-amber-500/10',
-    border:  'border-amber-500/20',
-    text:    'text-amber-400',
+    icon: <Crown size={32} />,
+    emoji: '♟️',
+    color: 'from-amber-500 to-yellow-500',
+    bg: 'bg-amber-500/10',
+    border: 'border-amber-500/20',
+    text: 'text-amber-400',
   },
   {
-    icon:    <Gamepad2 size={32} />,
-    emoji:   '🎮',
-    color:   'from-violet-500 to-purple-500',
-    bg:      'bg-violet-500/10',
-    border:  'border-violet-500/20',
-    text:    'text-violet-400',
+    icon: <Gamepad2 size={32} />,
+    emoji: '🎮',
+    color: 'from-violet-500 to-purple-500',
+    bg: 'bg-violet-500/10',
+    border: 'border-violet-500/20',
+    text: 'text-violet-400',
   },
   {
-    icon:    <Waves size={32} />,
-    emoji:   '🏊',
-    color:   'from-sky-500 to-cyan-500',
-    bg:      'bg-sky-500/10',
-    border:  'border-sky-500/20',
-    text:    'text-sky-400',
+    icon: <Waves size={32} />,
+    emoji: '🏊',
+    color: 'from-sky-500 to-cyan-500',
+    bg: 'bg-sky-500/10',
+    border: 'border-sky-500/20',
+    text: 'text-sky-400',
   },
 ];
 
@@ -47,14 +46,14 @@ export default function AboutPage() {
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, []);
 
   const infoRows = [
-    { icon: <User size={15} />,     label: 'Full Name',     value: personalInfo.name },
+    { icon: <User size={15} />, label: 'Full Name', value: personalInfo.name },
     { icon: <Calendar size={15} />, label: 'Date of Birth', value: personalInfo.birthDate },
-    { icon: <MapPin size={15} />,   label: 'Place of Birth',value: personalInfo.birthPlace },
-    { icon: <User size={15} />,     label: 'Gender',        value: personalInfo.gender },
-    { icon: <Heart size={15} />,    label: 'Religion',      value: personalInfo.religion },
-    { icon: <Droplets size={15} />, label: 'Blood Type',    value: personalInfo.bloodType },
-    { icon: <MapPin size={15} />,   label: 'Address',       value: personalInfo.address },
-    { icon: <BookOpen size={15} />, label: 'Motivation',    value: personalInfo.motto },
+    { icon: <MapPin size={15} />, label: 'Place of Birth', value: personalInfo.birthPlace },
+    { icon: <User size={15} />, label: 'Gender', value: personalInfo.gender },
+    { icon: <Heart size={15} />, label: 'Religion', value: personalInfo.religion },
+    { icon: <Droplets size={15} />, label: 'Blood Type', value: personalInfo.bloodType },
+    { icon: <MapPin size={15} />, label: 'Address', value: personalInfo.address },
+    { icon: <BookOpen size={15} />, label: 'Motivation', value: personalInfo.motto },
   ];
 
   return (
@@ -83,7 +82,7 @@ export default function AboutPage() {
 
               {/* Photo */}
               <div className="md:col-span-2 flex flex-col items-center gap-4 fade-up fade-delay-1">
-                <div className="relative">
+                <div className="relative w-full flex justify-center">
                   {/* Glow ring */}
                   <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 blur-xl" />
                   <div className="relative w-80 md:w-96 rounded-2xl overflow-hidden ring-2 ring-emerald-400/30 shadow-2xl shadow-emerald-500/20">
@@ -94,20 +93,18 @@ export default function AboutPage() {
                     />
                   </div>
                   {/* Online badge */}
-                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm border border-emerald-500/30 rounded-full px-3 py-1 text-xs text-emerald-400 font-mono whitespace-nowrap">
+                  {/* <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur-sm border border-emerald-500/30 rounded-full px-3 py-1 text-xs text-emerald-400 font-mono whitespace-nowrap">
                     ● Open to Opportunities
-                  </div>
+                  </div> */}
                 </div>
-                {/* LinkedIn Button */}
-                <a
-                  href="https://www.linkedin.com/in/ryan-febrianto-b10524315/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 bg-blue-600/90 hover:bg-blue-500 border border-blue-500/40 text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all hover:-translate-y-0.5 shadow-lg shadow-blue-500/20"
+                {/* Contact CTA Button */}
+                <Link
+                  to="/contact"
+                  className="mt-8 w-80 md:w-96 flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-sm font-bold py-3 rounded-2xl transition-all hover:-translate-y-0.5 shadow-lg shadow-emerald-500/25"
                 >
-                  <LinkedInIcon size={15} />
-                  Connect on LinkedIn
-                </a>
+                  <Mail size={15} />
+                  Contact Me
+                </Link>
               </div>
 
               {/* Bio + Info */}
