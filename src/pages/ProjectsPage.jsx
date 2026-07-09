@@ -7,9 +7,9 @@ import { useScrollFade } from '../hooks/useScrollFade';
 
 /* ── Stats summary ──────────────────────────────────────────────────────────── */
 const stats = [
-  { label: 'Live Projects',  value: '7' },
-  { label: 'ML Frameworks',  value: '4+' },
-  { label: 'Algorithms',     value: 'ANN, LSTM, AdaBoost…' },
+  { label: 'Live Projects', value: '7' },
+  { label: 'ML Frameworks', value: '4+' },
+  { label: 'Algorithms', value: 'ANN, LSTM, AdaBoost…' },
 ];
 
 export default function ProjectsPage() {
@@ -46,7 +46,7 @@ export default function ProjectsPage() {
                 </span>
               </h1>
               <p className="text-slate-400 mt-3 max-w-2xl leading-relaxed">
-                A curated collection of Python, Data Science, and Streamlit applications —
+                A curated collection of Python, Data Science, and Streamlit applications,
                 each built to solve a real-world problem. Click any card to read the full case study.
               </p>
             </div>
