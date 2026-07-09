@@ -24,10 +24,10 @@ export default function HeroSection() {
           </h2>
 
           <p className="text-slate-400 text-lg leading-relaxed text-justify">
-            Seorang praktisi IT yang berfokus pada bidang{' '}
-            <strong className="text-emerald-300">Data Analytics</strong>. Senang mengolah
-            data mentah menjadi wawasan visual yang bernilai, serta membangun aplikasi web
-            testing model kecerdasan buatan menggunakan Python dan Streamlit.
+            An IT practitioner focused on{' '}
+            <strong className="text-emerald-300">Data Analytics</strong>. Passionate about
+            transforming raw data into meaningful visual insights, and building web applications
+            to test AI models using Python and Streamlit.
           </p>
 
           <div className="pt-2">
@@ -35,7 +35,7 @@ export default function HeroSection() {
               href="#projects"
               className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-lg text-sm transition shadow-lg shadow-emerald-500/20 inline-block"
             >
-              Lihat Proyek Streamlit
+              View Streamlit Projects
             </a>
           </div>
         </div>
@@ -58,15 +58,15 @@ export default function HeroSection() {
           {/* Profile card */}
           <div className="w-full bg-slate-900/60 p-6 rounded-2xl border border-slate-800 shadow-xl space-y-4">
             <h3 className="text-base font-bold text-emerald-400 border-b border-slate-800 pb-2 flex items-center gap-2">
-              <User size={18} /> Ringkasan Profil
+              <User size={18} /> Profile Summary
             </h3>
             <div className="text-xs space-y-2.5 text-slate-300 font-mono">
-              <p><span className="text-slate-500">Panggilan:</span> {personalInfo.nickname}</p>
-              <p><span className="text-slate-500">Tgl. Lahir:</span> {personalInfo.birthDate}</p>
-              <p><span className="text-slate-500">Domisili:</span>  {personalInfo.birthPlace}</p>
-              <p><span className="text-slate-500">Gender:</span>    {personalInfo.gender}</p>
-              <p><span className="text-slate-500">Agama:</span>     {personalInfo.religion}</p>
-              <p><span className="text-slate-500">Darah:</span>     {personalInfo.bloodType}</p>
+              <p><span className="text-slate-500">Nickname:</span>   {personalInfo.nickname}</p>
+              <p><span className="text-slate-500">Birth Date:</span> {personalInfo.birthDate}</p>
+              <p><span className="text-slate-500">Location:</span>   {personalInfo.birthPlace}</p>
+              <p><span className="text-slate-500">Gender:</span>     {personalInfo.gender}</p>
+              <p><span className="text-slate-500">Religion:</span>   {personalInfo.religion}</p>
+              <p><span className="text-slate-500">Blood Type:</span> {personalInfo.bloodType}</p>
             </div>
           </div>
         </div>

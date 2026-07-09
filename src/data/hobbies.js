@@ -1,15 +1,15 @@
-// ── HOBI ─────────────────────────────────────────────────────────────────────
+// ── HOBBIES ───────────────────────────────────────────────────────────────────
 export const hobbies = [
   {
-    name: "Bermain Game",
-    desc: "Mengisi waktu luang dengan bermain game mobile untuk melatih fokus dan strategi bersama tim." //[cite: 9]
+    name: "Playing Games",
+    desc: "Spending free time playing mobile games to sharpen focus and strategic teamwork." //[cite: 9]
   },
   {
-    name: "Catur Online",
-    desc: "Mengasah kemampuan berpikir kritis, analisis risiko, dan problem solving melalui catur daring." //[cite: 9]
+    name: "Online Chess",
+    desc: "Honing critical thinking, risk analysis, and problem-solving skills through online chess." //[cite: 9]
   },
   {
-    name: "Berenang",
-    desc: "Menjaga kebugaran fisik dan stamina tubuh di kala senggang bersama teman-teman dekat." //[cite: 9]
+    name: "Swimming",
+    desc: "Keeping physically fit and building stamina during leisure time with close friends." //[cite: 9]
   }
 ];

@@ -10,9 +10,9 @@ export default function ContactSection() {
         <div className="max-w-4xl mx-auto text-center space-y-8">
 
           <div className="fade-up">
-            <h3 className="text-2xl font-bold text-white">Hubungi Ryan</h3>
+            <h3 className="text-2xl font-bold text-white">Get in Touch with Ryan</h3>
             <p className="text-xs text-slate-400 mt-1">
-              Buka untuk peluang magang, kerja sama analisis data, atau sekadar diskusi teknologi.
+              Open to internship opportunities, data analysis collaborations, or just a tech discussion.
             </p>
           </div>
 

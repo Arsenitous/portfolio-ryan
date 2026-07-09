@@ -7,10 +7,10 @@ export default function AboutSection() {
     <section id="about" className="bg-slate-900/30 py-20 border-t border-slate-800">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
 
-        {/* ── Kolom Pengalaman Kerja ────────────────────────────────── */}
+        {/* ── Work Experience Column ────────────────────────────────── */}
         <div className="space-y-6 fade-up">
           <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-            <Briefcase size={22} className="text-emerald-400" /> Pengalaman Kerja
+            <Briefcase size={22} className="text-emerald-400" /> Work Experience
           </h3>
 
           {workExperience.map((work, idx) => (
@@ -30,17 +30,17 @@ export default function AboutSection() {
                   rel="noreferrer"
                   className="text-xs text-teal-400 hover:underline inline-flex items-center gap-1"
                 >
-                  Website Immanuel <ExternalLink size={12} />
+                  Immanuel School Website <ExternalLink size={12} />
                 </a>
               </div>
             </div>
           ))}
         </div>
 
-        {/* ── Kolom Minat & Hobi ───────────────────────────────────── */}
+        {/* ── Interests & Hobbies Column ───────────────────────────────────── */}
         <div className="space-y-6 fade-up fade-delay-2">
           <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-            <Gamepad2 size={24} className="text-emerald-400" /> Minat & Hobi
+            <Gamepad2 size={24} className="text-emerald-400" /> Interests & Hobbies
           </h3>
 
           <div className="grid gap-4">

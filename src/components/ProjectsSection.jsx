@@ -26,8 +26,8 @@ export default function ProjectsSection() {
             </span>
           </h3>
           <p className="text-sm text-slate-400 mt-2 max-w-xl">
-            7 aplikasi interaktif berbasis Python yang di-deploy secara live menggunakan Streamlit Share —
-            dari prediksi klasifikasi hingga pemodelan bahasa.
+            7 interactive Python-based applications deployed live using Streamlit Share —
+            from classification predictions to language modeling.
           </p>
         </div>
 
