@@ -4,6 +4,7 @@ import HomePage          from './pages/HomePage';
 import ProjectsPage      from './pages/ProjectsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import AboutPage         from './pages/AboutPage';
+import SkillsPage        from './pages/SkillsPage';
 import ContactPage       from './pages/ContactPage';
 
 /* ── Global animation styles (shared across all pages) ─────────────────────── */
@@ -60,6 +61,7 @@ export default function App() {
         <Routes>
           <Route path="/"                  element={<HomePage />} />
           <Route path="/about"             element={<AboutPage />} />
+          <Route path="/skills"            element={<SkillsPage />} />
           <Route path="/projects"          element={<ProjectsPage />} />
           <Route path="/projects/:slug"    element={<ProjectDetailPage />} />
           <Route path="/contact"           element={<ContactPage />} />

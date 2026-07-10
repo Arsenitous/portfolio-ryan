@@ -1,0 +1,107 @@
+// ── Skills & Technology data ─────────────────────────────────────────────────
+// devicon class → uses Devicons CDN (index.html)
+// simpleicon slug → uses SimpleIcons CDN (https://cdn.simpleicons.org/[slug])
+// If no devicon or simpleicon exists, icon (emoji) is used as fallback
+
+export const skillCategories = [
+  {
+    id: 'data',
+    label: 'Data & Analytics',
+    emoji: '📊',
+    color: {
+      gradient: 'from-amber-500 to-yellow-500',
+      bg: 'bg-amber-500/10',
+      border: 'border-amber-500/25',
+      text: 'text-amber-400',
+      glow: 'bg-amber-500',
+      pillBg: 'bg-amber-500/10 border-amber-500/20 text-amber-300',
+      dot: 'bg-amber-400',
+    },
+    desc: 'Processing and analyzing data to generate meaningful insights.',
+    skills: [
+      { name: 'Python',             devicon: 'devicon-python-plain colored' },
+      { name: 'SQL',                devicon: 'devicon-azuresqldatabase-plain colored' },
+      { name: 'Pandas',             devicon: 'devicon-pandas-plain colored' },
+      { name: 'Matplotlib/Seaborn', icon: '📈' },
+      { name: 'TensorFlow',         devicon: 'devicon-tensorflow-original colored' },
+      { name: 'MLflow',             simpleicon: 'mlflow', icon: '🔁' },
+      { name: 'Excel',              imgUrl: 'https://cdn.icon-icons.com/icons2/2397/PNG/512/microsoft_office_excel_logo_icon_145720.png', icon: '📊' },
+      { name: 'Google Sheets',      simpleicon: 'googlesheets', icon: '📋' },
+      { name: 'DagsHub',            imgUrl: 'https://github.com/DagsHub.png', icon: '🏷️' },
+    ],
+  },
+  {
+    id: 'web',
+    label: 'Web & Development',
+    emoji: '🌐',
+    color: {
+      gradient: 'from-violet-500 to-purple-500',
+      bg: 'bg-violet-500/10',
+      border: 'border-violet-500/25',
+      text: 'text-violet-400',
+      glow: 'bg-violet-500',
+      pillBg: 'bg-violet-500/10 border-violet-500/20 text-violet-300',
+      dot: 'bg-violet-400',
+    },
+    desc: 'Building web applications and developing digital solutions.',
+    skills: [
+      { name: 'HTML',         devicon: 'devicon-html5-plain colored' },
+      { name: 'CSS',          devicon: 'devicon-css3-plain colored' },
+      { name: 'JavaScript',   devicon: 'devicon-javascript-plain colored' },
+      { name: 'Java',         devicon: 'devicon-java-plain colored' },
+      { name: 'C++',          devicon: 'devicon-cplusplus-plain colored' },
+      { name: 'Visual Basic', devicon: 'devicon-visualbasic-plain colored' },
+      { name: 'React',        devicon: 'devicon-react-original colored' },
+      { name: 'Bootstrap',    devicon: 'devicon-bootstrap-plain colored' },
+      { name: 'Tailwind',     devicon: 'devicon-tailwindcss-plain colored' },
+      { name: 'Laravel',      devicon: 'devicon-laravel-plain colored' },
+      { name: 'Streamlit',    simpleicon: 'streamlit', icon: '🚀' },
+      { name: 'Flask',        devicon: 'devicon-flask-original colored' },
+    ],
+  },
+  {
+    id: 'tools',
+    label: 'Tools & Platforms',
+    emoji: '🛠️',
+    color: {
+      gradient: 'from-sky-500 to-cyan-500',
+      bg: 'bg-sky-500/10',
+      border: 'border-sky-500/25',
+      text: 'text-sky-400',
+      glow: 'bg-sky-500',
+      pillBg: 'bg-sky-500/10 border-sky-500/20 text-sky-300',
+      dot: 'bg-sky-400',
+    },
+    desc: 'Tools and platforms that support my day-to-day development workflow.',
+    skills: [
+      { name: 'Git',          devicon: 'devicon-git-plain colored' },
+      { name: 'GitHub',       devicon: 'devicon-github-original' },
+      { name: 'VS Code',      devicon: 'devicon-vscode-plain colored' },
+      { name: 'Jupyter',      devicon: 'devicon-jupyter-plain colored' },
+      { name: 'Google Colab', simpleicon: 'googlecolab', icon: '☁️' },
+      { name: 'MongoDB',      devicon: 'devicon-mongodb-plain colored' },
+      { name: 'HeidiSQL',     devicon: 'devicon-mysql-plain colored' },
+      { name: 'PHPMyAdmin',   devicon: 'devicon-php-plain colored' },
+      { name: 'Postman',      devicon: 'devicon-postman-plain colored' },
+      { name: 'Netbeans',     devicon: 'devicon-netbeans-plain colored' },
+      { name: 'Laragon',      simpleicon: 'laragon', icon: '🦅' },
+      { name: 'Sourcetree',   simpleicon: 'sourcetree', icon: '🌳' },
+    ],
+  },
+];
+
+// Subset for homepage preview — most notable skills
+export const featuredSkills = [
+  { name: 'Python',       dot: 'bg-amber-400',  bg: 'bg-amber-500/10  border-amber-500/20  text-amber-300',  devicon: 'devicon-python-plain colored' },
+  { name: 'SQL',          dot: 'bg-amber-400',  bg: 'bg-amber-500/10  border-amber-500/20  text-amber-300',  devicon: 'devicon-azuresqldatabase-plain colored' },
+  { name: 'React',        dot: 'bg-violet-400', bg: 'bg-violet-500/10 border-violet-500/20 text-violet-300', devicon: 'devicon-react-original colored' },
+  { name: 'TensorFlow',   dot: 'bg-amber-400',  bg: 'bg-amber-500/10  border-amber-500/20  text-amber-300',  devicon: 'devicon-tensorflow-original colored' },
+  { name: 'JavaScript',   dot: 'bg-violet-400', bg: 'bg-violet-500/10 border-violet-500/20 text-violet-300', devicon: 'devicon-javascript-plain colored' },
+  { name: 'Streamlit',    dot: 'bg-violet-400', bg: 'bg-violet-500/10 border-violet-500/20 text-violet-300', simpleicon: 'streamlit', icon: '🚀' },
+  { name: 'Git',          dot: 'bg-sky-400',    bg: 'bg-sky-500/10    border-sky-500/20    text-sky-300',    devicon: 'devicon-git-plain colored' },
+  { name: 'Pandas',       dot: 'bg-amber-400',  bg: 'bg-amber-500/10  border-amber-500/20  text-amber-300',  devicon: 'devicon-pandas-plain colored' },
+  { name: 'Flask',        dot: 'bg-violet-400', bg: 'bg-violet-500/10 border-violet-500/20 text-violet-300', devicon: 'devicon-flask-original colored' },
+  { name: 'MongoDB',      dot: 'bg-sky-400',    bg: 'bg-sky-500/10    border-sky-500/20    text-sky-300',    devicon: 'devicon-mongodb-plain colored' },
+  { name: 'Google Colab', dot: 'bg-sky-400',    bg: 'bg-sky-500/10    border-sky-500/20    text-sky-300',    simpleicon: 'googlecolab', icon: '☁️' },
+  { name: 'MLflow',       dot: 'bg-amber-400',  bg: 'bg-amber-500/10  border-amber-500/20  text-amber-300',  simpleicon: 'mlflow', icon: '🔁' },
+];

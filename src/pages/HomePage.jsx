@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import Navbar         from '../components/Navbar';
-import HeroSection    from '../components/HeroSection';
-import AboutSection   from '../components/AboutSection';
-import ContactSection from '../components/ContactSection';
-import { useScrollFade } from '../hooks/useScrollFade';
+import Navbar                from '../components/Navbar';
+import HeroSection           from '../components/HeroSection';
+import AboutSection          from '../components/AboutSection';
+import SkillsPreviewSection  from '../components/SkillsPreviewSection';
+import ContactSection        from '../components/ContactSection';
+import { useScrollFade }     from '../hooks/useScrollFade';
 
 export default function HomePage() {
   useScrollFade();
@@ -17,6 +18,7 @@ export default function HomePage() {
     <>
       <Navbar />
       <HeroSection />
+      <SkillsPreviewSection />
       <AboutSection />
       <ContactSection />
     </>

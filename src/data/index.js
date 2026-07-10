@@ -4,8 +4,9 @@
 // Contoh penggunaan di komponen:
 //   import { personalInfo, projects } from '../data';
 
-export { personalInfo }   from './personal';
-export { projects }       from './projects';
-export { workExperience } from './experience';
-export { hobbies }        from './hobbies';
-export { education }      from './education';
+export { personalInfo }                    from './personal';
+export { projects }                        from './projects';
+export { workExperience }                  from './experience';
+export { hobbies }                         from './hobbies';
+export { education }                       from './education';
+export { skillCategories, featuredSkills } from './skills';
