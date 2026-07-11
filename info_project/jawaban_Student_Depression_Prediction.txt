@@ -1,0 +1,100 @@
+╔══════════════════════════════════════════════════════════╗
+║  PROJECT 5 — Student Depression Prediction 🧠           ║
+║  (AdaBoost · Classification)                            ║
+╚══════════════════════════════════════════════════════════╝
+
+── SECTION 1: Background & Problem ──────────────────────
+Q1. Apa masalah nyata yang ingin diselesaikan proyek ini?
+
+    JAWABAN:
+    Proyek ini bertujuan untuk menganalisis tren kesehatan mental dan memprediksi indikasi depresi 
+    di kalangan pelajar/mahasiswa. Dengan mendeteksi lebih awal, kita dapat membantu merancang 
+    strategi intervensi dini yang lebih baik bagi mahasiswa yang rentan.
+
+Q2. Kenapa masalah ini penting untuk diselesaikan?
+
+    JAWABAN:
+    Kesehatan mental di kalangan pelajar sangat krusial karena dapat berdampak langsung pada 
+    kinerja akademik, kualitas hidup, hingga risiko pemikiran bunuh diri. Deteksi dini 
+    memungkinkan pihak kampus atau tenaga profesional untuk segera memberikan dukungan.
+
+── SECTION 2: Dataset & EDA ─────────────────────────────
+Q3. Dari mana kamu dapat dataset-nya?
+
+    JAWABAN:
+    Dataset yang digunakan bersifat publik dan didapatkan dari Kaggle dengan nama 
+    "Student Depression Dataset".
+
+Q4. Berapa jumlah baris & kolom/fitur dataset-nya?
+
+    JAWABAN:  Baris: 27901       Kolom: 18
+
+Q5. Fitur apa saja yang ada di dataset?
+    (Demografi, akademik, gaya hidup — sebutkan yang spesifik)
+
+    JAWABAN:
+    - Demografi: Usia (Age), Jenis Kelamin (Gender), Kota Asal (City), Pendidikan (Degree).
+    - Akademik & Pekerjaan: Tekanan Akademik, Tekanan Kerja, Nilai (CGPA), Jam Kerja/Belajar, Kepuasan Belajar & Kerja.
+    - Gaya Hidup & Kesehatan: Durasi Tidur, Kebiasaan Makan, Stres Finansial, Riwayat Penyakit Mental Keluarga, Pemikiran Bunuh Diri.
+
+Q6. Apakah dataset seimbang (balanced)? Berapa rasio depresi vs tidak?
+
+    JAWABAN:  Depresi: 58.55%    Tidak: 41.45%
+
+Q7. Temuan menarik apa yang kamu temukan saat EDA?
+    (Faktor apa yang paling berpengaruh terhadap depresi?)
+
+    JAWABAN:
+    Dari analisis feature importance, variabel akademik dan ekonomi sangat dominan. 
+    Tekanan Akademik (Academic Pressure) adalah faktor yang paling besar pengaruhnya 
+    terhadap tingkat depresi mahasiswa, diikuti oleh faktor Usia (Age) dan Stres Finansial.
+
+── SECTION 3: Methodology & Modeling ───────────────────
+Q8. Kenapa memilih AdaBoost daripada algoritma lain?
+
+    JAWABAN:
+    AdaBoost terpilih karena berdasarkan proses penyaringan awal dan pengujian terhadap 9 algoritma 
+    (Logistic Regression, Random Forest, XGBoost, dll), AdaBoost keluar sebagai model terbaik (Peringkat 1) 
+    dengan metrik kinerja tertinggi dan paling stabil pada dataset ini.
+
+Q9. Parameter AdaBoost yang kamu gunakan?
+    (n_estimators, learning_rate, base estimator)
+
+    JAWABAN:
+    Proses eksperimen melibatkan hyperparameter tuning (GridSearchCV) untuk n_estimators (50-500) 
+    dan learning_rate. Namun, kesimpulan akhir merekomendasikan penggunaan AdaBoost dengan 
+    Parameter Default bawaan scikit-learn karena memberikan hasil paling optimal tanpa overfitting.
+
+Q10. Berapa hasil metric evaluasi model-mu?
+     (Accuracy, F1-Score, Precision, Recall)
+
+     JAWABAN:
+     Model dievaluasi menggunakan berbagai metrik, dan berdasarkan hasil pengujian terbaik (Default), 
+     model mencapai performa F1-Score sebesar 84.9% (0.849), menunjukkan keseimbangan yang sangat 
+     baik antara Precision dan Recall dalam mendeteksi kelas depresi.
+
+Q11. Fitur mana yang paling penting (feature importance)?
+
+     JAWABAN:
+     Berdasarkan bobot model, 4 fitur paling penting secara berurutan adalah:
+     1. Academic Pressure (Tekanan Akademik)
+     2. Age (Usia)
+     3. Dietary Habits (Kebiasaan Makan / Gaya Hidup)
+     4. Financial Stress (Stres Finansial)
+
+── SECTION 4: Impact & Insights ────────────────────────
+Q12. Apa yang bisa dilakukan user di aplikasi Streamlit-mu?
+
+     JAWABAN:
+     User dapat bertindak seolah-olah memasukkan profil seorang mahasiswa (mengisi nilai demografi, 
+     tekanan akademik, gaya hidup, dll). Aplikasi kemudian akan menggunakan model Machine Learning 
+     untuk memprediksi dan menampilkan Probabilitas Depresi (%) secara instan (Live Demo) 
+     serta memberikan saran intervensi singkat.
+
+Q13. Apa insight atau kesimpulan paling penting dari proyek ini?
+
+     JAWABAN:
+     Kesimpulan terpenting adalah depresi pada mahasiswa tidak hanya dipengaruhi oleh satu faktor, 
+     melainkan kombinasi kuat antara tingginya beban/tekanan akademik dan kesulitan finansial. 
+     Model AI (AdaBoost) terbukti efektif (F1: 84.9%) digunakan sebagai alat *screening* awal 
+     untuk membantu instansi pendidikan mendeteksi mahasiswa yang berisiko tinggi.

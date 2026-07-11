@@ -26,7 +26,7 @@ export default function SkillsPreviewSection() {
 
             {/* Description */}
             <p className="text-slate-400 text-sm leading-relaxed">
-              From data analytics to web development — here are the technologies
+              From data analytics to web development, here are the technologies
               I use to build meaningful solutions.
             </p>
 

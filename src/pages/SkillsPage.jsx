@@ -63,7 +63,7 @@ export default function SkillsPage() {
             {/* Subtitle */}
             <p className="text-slate-400 max-w-2xl leading-relaxed fade-up fade-delay-3">
               A collection of technologies, programming languages, and tools I have learned
-              and used across various projects — ranging from data analytics and web development
+              and used across various projects, ranging from data analytics and web development
               to machine learning.
             </p>
 

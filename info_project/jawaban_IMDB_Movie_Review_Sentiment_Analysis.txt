@@ -1,0 +1,71 @@
+╔══════════════════════════════════════════════════════════╗
+║  PROJECT 3 — IMDB Movie Review Sentiment Analysis       ║
+║  (RNN · NLP)                                            ║
+╚══════════════════════════════════════════════════════════╝
+
+── SECTION 1: Background & Problem ──────────────────────
+Q1. Apa masalah nyata yang ingin diselesaikan proyek ini?
+
+    JAWABAN:
+    Proyek ini bertujuan untuk menganalisis dan mengklasifikasikan sentimen ulasan film (review) ke dalam kategori positif atau negatif secara otomatis menggunakan pemrosesan bahasa alami (NLP) dan jaringan saraf tiruan (RNN).
+
+Q2. Kenapa masalah ini penting untuk diselesaikan?
+
+    JAWABAN:
+    Membaca ribuan ulasan teks secara manual untuk mengetahui respon audiens memakan waktu sangat lama. Dengan model ini, produser film atau platform agregator ulasan dapat secara instan mengetahui apakah suatu film diterima dengan baik (sentimen positif) atau buruk (sentimen negatif) oleh publik.
+
+── SECTION 2: Dataset & EDA ─────────────────────────────
+Q3. Dari mana kamu dapat dataset-nya?
+
+    JAWABAN:
+    Dataset yang digunakan adalah "IMDB Movie Reviews dataset" yang sudah disediakan langsung oleh library `tensorflow.keras.datasets.imdb`.
+
+Q4. Berapa jumlah data (review) dalam dataset?
+
+    JAWABAN:  Total review: 50,000 (25,000 untuk data latih / training dan 25,000 untuk data uji / testing).
+
+Q5. Bagaimana distribusi label positif vs negatif?
+
+    JAWABAN:  Positif: 50%   Negatif: 50% (Dataset ini sangat seimbang / perfectly balanced).
+
+Q6. Bagaimana kamu memproses teks-nya?
+    (Tokenisasi, padding, vocabulary size, max sequence length)
+
+    JAWABAN:
+    Teks direpresentasikan ke dalam bentuk angka (tokenized indices) dengan Vocabulary Size dibatasi hanya 10,000 kata (max_features) yang paling sering muncul. Kemudian dilakukan teknik Padding dengan panjang maksimal sekuens (Max Sequence Length) sebanyak 500 kata per ulasan, agar dimensi input yang masuk ke model menjadi seragam (jika teks terlalu pendek akan ditambah angka nol/padding, dan jika terlalu panjang akan dipotong/truncate).
+
+Q7. Temuan menarik apa yang kamu temukan dari data teks-nya?
+    (Kata yang paling sering muncul, rata-rata panjang review, dll.)
+
+    JAWABAN:
+    Ditemukan bahwa model Deep Learning tidak bisa langsung mengolah kata/string sehingga harus menggunakan pemetaan dictionary (`word_index`) dan indeksnya digeser (offset) sebanyak 3 untuk mengakomodasi token khusus seperti [PAD], [START], dan [UNKNOWN]/OOV. Banyak ulasan memiliki panjang teks di bawah 500 kata, namun ada juga ulasan yang sangat panjang sehingga membatasi max_len=500 merupakan kompromi yang baik untuk menghemat resource memori.
+
+── SECTION 3: Methodology & Modeling ───────────────────
+Q8. Arsitektur model RNN-nya seperti apa?
+    (Embedding layer? Berapa unit RNN? Dropout?)
+
+    JAWABAN:
+    Arsitektur model Sequential menggunakan 3 layer utama:
+    1. Layer Embedding dengan input_dim 10,000 (vocabulary size) dan output_dim 128 vektor.
+    2. Layer SimpleRNN dengan 128 units dan fungsi aktivasi ReLU untuk mempelajari urutan (sequence) dari teks.
+    3. Output Layer (Dense) dengan 1 unit (Fungsi aktivasi Sigmoid untuk probabilitas 0 atau 1).
+
+Q9. Berapa hasil akurasi model-mu di test set?
+
+    JAWABAN:  Accuracy: Rata-rata berkisar di sekitar 80% - 85% pada test set (menggunakan optimizer Adam, Loss function binary_crossentropy dan pembatasan epochs melalui Early Stopping).
+
+Q10. Apakah ada tantangan teknis yang kamu hadapi?
+
+     JAWABAN:
+     Tantangan menggunakan arsitektur SimpleRNN pada data teks yang panjang (hingga 500 sequence) adalah terjadinya masalah *Vanishing Gradient*, di mana informasi dari kata-kata awal teks sulit dipertahankan oleh RNN standar, namun pemilihan aktivasi ReLU pada RNN bisa sedikit mengurangi dampak tersebut. Tantangan lainnya adalah menangani kata-kata baru (Out-Of-Vocabulary) dari input Streamlit yang harus diproses ke indeks mapping Unknown secara tepat.
+
+── SECTION 4: Impact & Insights ────────────────────────
+Q11. Apa yang bisa dilakukan user di aplikasi Streamlit-mu?
+
+     JAWABAN:
+     User bisa mengetik atau mem-paste sebuah kalimat atau paragraf ulasan film dalam bahasa Inggris ke dalam text-box aplikasi. Kemudian dengan menekan tombol "Classify", model akan memprediksi secara real-time apakah ulasan tersebut bernada "Positif" atau "Negatif" beserta visualisasi Skor Prediksinya (Prediction Score).
+
+Q12. Apa insight atau kesimpulan paling penting dari proyek ini?
+
+     JAWABAN:
+     Dengan kombinasi NLP dasar (Padding & Text Embedding) dan jaringan arsitektur Recurrent Neural Network (RNN), teks yang tidak terstruktur dapat diterjemahkan ke sebuah pemahaman konteks urutan sekuensial oleh mesin. Proyek ini membuktikan bahwa Deep Learning dapat mengklasifikasikan opini dengan tingkat akurasi yang baik dan menjadi landasan kokoh bagi pengembangan Chatbot atau asisten AI pemahaman bahasa.

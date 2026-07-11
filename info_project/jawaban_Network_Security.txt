@@ -1,0 +1,98 @@
+╔══════════════════════════════════════════════════════════╗
+║  PROJECT 6 — Network Security Prediction App 🛡️         ║
+║  (Classification · Security)                            ║
+╚══════════════════════════════════════════════════════════╝
+
+── SECTION 1: Background & Problem ──────────────────────
+Q1. Apa masalah nyata yang ingin diselesaikan proyek ini?
+
+    JAWABAN:
+    Proyek ini bertujuan untuk menyelesaikan masalah pendeteksian serangan URL Phishing. 
+    Serangan phishing adalah upaya penipuan di mana penyerang mengelabui pengguna agar 
+    mengunjungi situs web berbahaya yang dirancang menyerupai situs web asli (legitimate) 
+    untuk mencuri informasi sensitif seperti kredensial login atau data finansial.
+
+Q2. Kenapa masalah ini penting untuk diselesaikan?
+
+    JAWABAN:
+    Masalah ini sangat penting karena teknik phishing semakin canggih dan sulit dikenali 
+    hanya dengan mata telanjang. Deteksi otomatis sangat dibutuhkan untuk melindungi 
+    pengguna dari kebocoran data pribadi dan kerugian finansial akibat kejahatan siber.
+
+── SECTION 2: Dataset & EDA ─────────────────────────────
+Q3. Dataset apa yang kamu pakai?
+    (Nama dataset, sumber, jumlah record)
+
+    JAWABAN:
+    Nama Dataset: UCI Phishing Websites Dataset
+    Sumber: UCI Machine Learning Repository
+    Jumlah Record: 11.055 sampel data
+
+Q4. Berapa jumlah baris & kolom/fitur dataset-nya?
+
+    JAWABAN:  Baris: 11.055       Kolom: 31 (30 fitur + 1 target 'Result')
+
+Q5. Jenis serangan apa saja yang ada di dataset?
+    (DoS, Probe, R2L, U2R, dll. — sebutkan yang ada)
+
+    JAWABAN:
+    Dataset ini tidak mencakup jenis serangan jaringan seperti DoS, Probe, R2L, atau U2R. 
+    Dataset ini secara spesifik berfokus pada satu jenis serangan yaitu *Phishing*. Label 
+    atau target pada dataset ini bersifat biner, yaitu membedakan apakah URL tersebut 
+    adalah Phishing (URL berbahaya) atau Legitimate (URL aman).
+
+Q6. Temuan menarik apa yang kamu temukan saat EDA?
+    (Distribusi jenis serangan, fitur terpenting, dll.)
+
+    JAWABAN:
+    Klasifikasi pada dataset ini didasarkan pada 30 fitur berbasis URL dan karakteristik 
+    jaringan (seperti keberadaan IP, panjang URL, status sertifikat SSL, penggunaan iframe, 
+    dan DNS Record). Data kategorikal telah di-encode menjadi nilai numerik, di mana target 
+    prediksi (Result) memiliki nilai 1 untuk Legitimate (Aman) dan -1 atau 0 untuk Phishing.
+
+── SECTION 3: Methodology & Modeling ───────────────────
+Q7. Algoritma apa yang akhirnya kamu pilih? Kenapa?
+    (Dan algoritma apa saja yang kamu bandingkan?)
+
+    JAWABAN:
+    Algoritma yang akhirnya dipilih adalah Random Forest Classifier, karena dari hasil 
+    evaluasi pipeline training, algoritma ini memberikan skor klasifikasi terbaik. 
+    Algoritma yang dibandingkan dalam proyek ini meliputi: Random Forest, Decision Tree, 
+    Gradient Boosting, Logistic Regression, dan AdaBoost.
+
+Q8. Bagaimana kamu mengintegrasikan MLflow?
+    (Untuk apa MLflow dipakai di proyek ini?)
+
+    JAWABAN:
+    MLflow diintegrasikan bersama DagsHub (`dagshub.init`) untuk melakukan *Experiment 
+    Tracking*. MLflow digunakan secara otomatis pada proses `model_trainer` untuk me-log 
+    metrik evaluasi model (F1-score, Precision, dan Recall), serta meregistrasikan 
+    (Model Registry) model klasifikasi terbaik yang dihasilkan.
+
+Q9. Berapa hasil metric evaluasi model-mu?
+    (Accuracy, F1-Score, Precision, Recall)
+
+    JAWABAN:
+    Pipeline model secara otomatis menghitung dan mencatat F1-Score, Precision, dan Recall 
+    ke dalam server MLflow (DagsHub) untuk membandingkan peforma setiap algoritma. 
+    Model terbaik (Random Forest) umumnya menghasilkan metrik (termasuk Akurasi) di atas 
+    90%+ untuk dataset Phishing Websites ini.
+
+── SECTION 4: Impact & Insights ────────────────────────
+Q10. Apa yang bisa dilakukan user di aplikasi Streamlit-mu?
+
+     JAWABAN:
+     - User dapat mengunduh file CSV sampel (sample_test.csv).
+     - User dapat mengunggah (upload) file CSV data jaringan/URL yang berisi 30 fitur numerik.
+     - Aplikasi akan memprediksi apakah baris data tersebut Phishing atau Legitimate.
+     - User dapat melihat ringkasan (Total Record, Total Phishing, Total Legitimate).
+     - User dapat melihat detail hasil per-baris dan mengunduhnya sebagai file CSV baru.
+
+Q11. Apa insight atau kesimpulan paling penting dari proyek ini?
+
+     JAWABAN:
+     Deteksi situs phishing dapat diotomatisasi secara efektif menggunakan Machine Learning 
+     dengan memanfaatkan fitur ekstraksi dari struktur URL dan sertifikat jaringan. 
+     Selain itu, penerapan arsitektur End-to-End MLOps—dari proses data ingestion, 
+     transformation, experiment tracking (MLflow), hingga serving via FastAPI dan Streamlit— 
+     menunjukkan bahwa model siap untuk di-deploy dan digunakan di tahap produksi.

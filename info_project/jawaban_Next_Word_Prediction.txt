@@ -1,0 +1,66 @@
+╔══════════════════════════════════════════════════════════╗
+║  PROJECT 4 — Next Word Prediction (LSTM)                ║
+║  (LSTM · Language Model)                                ║
+╚══════════════════════════════════════════════════════════╝
+
+── SECTION 1: Background & Problem ──────────────────────
+Q1. Apa masalah atau use-case yang ingin diselesaikan proyek ini?
+
+    JAWABAN:
+    Proyek ini bertujuan untuk membuat model bahasa (Language Model) yang dapat memprediksi kata selanjutnya secara otomatis (Next Word Prediction) berdasarkan kalimat yang sedang diketik oleh pengguna. Use-case dari proyek ini mirip dengan fitur autocomplete atau prediksi teks di keyboard smartphone (seperti SwiftKey atau Gboard) maupun pada kolom pencarian (search engine).
+
+Q2. Kenapa memilih LSTM daripada RNN biasa?
+
+    JAWABAN:
+    Long Short-Term Memory (LSTM) dipilih karena mampu mengingat konteks kalimat dalam urutan/sekuens yang lebih panjang (Long-Term Dependencies). RNN biasa memiliki kelemahan Vanishing Gradient di mana model akan "lupa" dengan konteks kata-kata awal jika kalimatnya terlalu panjang. LSTM mengatasi masalah ini dengan sangat baik melalui struktur *memory cell* dan gate mechanism (input, forget, output gates).
+
+── SECTION 2: Dataset & EDA ─────────────────────────────
+Q3. Data teks apa yang kamu pakai untuk training?
+    (Nama buku/corpus, sumber, jumlah karakter/kata)
+
+    JAWABAN:
+    Teks yang digunakan adalah karya literatur klasik "Hamlet" karangan William Shakespeare. Data corpus ini diambil langsung menggunakan library NLTK (`nltk.corpus.gutenberg`). Teks mentah dari buku ini terdiri dari lebih dari 160.000 karakter dan memuat sekitar 29.600 kata.
+
+Q4. Berapa ukuran vocabulary (unique words) dalam corpus?
+
+    JAWABAN:  Vocabulary size: Sesuai dengan seluruh jumlah kata unik di dalam buku Hamlet ditambah 1 token khusus untuk OOV (kurang lebih berkisar di atas 4.800 kata/token unik bergantung pada tahap preprocessing/pembersihan huruf kapital).
+
+Q5. Bagaimana cara kamu membuat sequence dari teks tersebut?
+    (n-gram? sliding window? panjang sequence berapa?)
+
+    JAWABAN:
+    Teks awalnya dipisahkan baris per baris. Kemudian, untuk setiap baris, urutan token kata (n-gram sequences) dibuat meningkat, contohnya `[1, 2]`, `[1, 2, 3]`, dan seterusnya. Lalu dilakukan proses **pre-padding** untuk menyeragamkan dimensi panjang seluruh array menjadi sebesar ukuran kalimat yang terpanjang (max_sequence_length). Terakhir, angka/token paling ujung ditarik sebagai label (target `y`) dan sisanya menjadi input (prediktor `x`).
+
+── SECTION 3: Methodology & Modeling ───────────────────
+Q6. Arsitektur model LSTM-nya seperti apa?
+    (Embedding, berapa layer LSTM, berapa unit, Early Stopping?)
+
+    JAWABAN:
+    Model menggunakan arsitektur Keras Sequential yang mendalam:
+    1. Layer Embedding: Input sesuai maksimal panjang sequence, output berdimensi 100.
+    2. Layer LSTM Pertama: 150 unit dengan return_sequences=True.
+    3. Layer Dropout: 0.2 (20% neuron dimatikan acak untuk mencegah overfitting).
+    4. Layer LSTM Kedua: 100 unit.
+    5. Layer Output Dense: Aktivasi Softmax dengan jumlah node sama dengan ukuran vocabulary (total_words) untuk klasifikasi multikelas (prediksi seluruh probabilitas kata).
+
+Q7. Berapa training epochs dan bagaimana loss-nya turun?
+
+    JAWABAN:
+    Model diprogram untuk berlatih maksimum hingga 50 epochs menggunakan loss `categorical_crossentropy` dan optimizer `adam`. Akan tetapi, saya menerapkan sistem regulasi *Early Stopping* (dengan patience=5). Hal ini berarti jika fungsi loss pada validasi (`val_loss`) berhenti membaik atau turun selama 5 iterasi berturut-turut, proses training akan otomatis terhenti sebelum 50 epochs selesai dan model akan memulihkan bobot parameter yang terbaik.
+
+Q8. Apakah ada tantangan teknis yang kamu hadapi?
+
+    JAWABAN:
+    Tantangan utama adalah besarnya kebutuhan memori komputasi saat melatih karena dimensi layer akhir (Softmax) sebesar ukuran vocabulary, yang menyebabkan matriks matriks perhitungannya menjadi amat padat. Selain itu, ada kerentanan mengalami *Overfitting* pada teks dari hanya satu buku (model menghafal karya Shakespeare alih-alih belajar bahasa umum) sehingga harus dikompensasi menggunakan Dropout dan Early Stopping.
+
+── SECTION 4: Impact & Insights ────────────────────────
+Q9. Apa yang bisa dilakukan user di aplikasi Streamlit-mu?
+    (Input apa? Output apa? Berapa kata yang diprediksi?)
+
+    JAWABAN:
+    User dapat menginput sepenggal kalimat berbahasa Inggris melalui kolom "Enter the sequence of Words". Setelah menekan tombol "Predict Next Word", aplikasi (melalui model ter-cache dan tokenizer) akan langsung menebak dan menampilkan tepat 1 (satu) kata selanjutnya (Next word) yang dirasa paling logis melengkapi kalimat user berdasarkan pemahamannya akan buku Hamlet.
+
+Q10. Apa insight atau kesimpulan paling penting dari proyek ini?
+
+     JAWABAN:
+     Deep Learning Neural Network—sehebat apa pun seperti LSTM—sejatinya tidak "memahami" makna kata atau arti bahasa seperti manusia. Algoritma ini hanya memodelkan probabilitas kemunculan token berdasarkan urutan matematis historis dari data latih (Gutenberg/Hamlet). Meski begitu, pola dan arsitektur linguistik kompleks tetap dapat dimodelkan secara otomatis oleh RNN dengan hasil yang akurat, membuktikan kemapanannya di ranah Generative Text.

@@ -162,7 +162,7 @@ export default function ContactPage() {
                 </span>
               </h2>
               <p className="text-slate-400 text-sm mt-2">
-                Fill in the form below and click "Send via Gmail" — it will open Gmail
+                Fill in the form below and click "Send via Gmail", it will open Gmail
                 with everything pre-filled, ready to send.
               </p>
             </div>

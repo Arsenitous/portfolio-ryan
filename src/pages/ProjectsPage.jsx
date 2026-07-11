@@ -63,7 +63,7 @@ export default function ProjectsPage() {
 
                 <p className="text-slate-400 leading-relaxed text-base max-w-lg">
                   A curated collection of Python, Data Science, and Streamlit
-                  applications — each built to solve a real-world problem using
+                  applications, each built to solve a real-world problem using
                   cutting-edge ML algorithms. Click any card to read the full case study.
                 </p>
 

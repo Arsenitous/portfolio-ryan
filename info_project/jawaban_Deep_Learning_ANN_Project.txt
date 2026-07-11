@@ -1,0 +1,155 @@
+╔══════════════════════════════════════════════════════════╗
+║  PROJECT 1 — Customer Churn Prediction 🏦               ║
+║  (ANN · Deep Learning)                                  ║
+╚══════════════════════════════════════════════════════════╝
+
+── SECTION 1: Background & Problem ──────────────────────
+Q1. Apa masalah nyata yang ingin diselesaikan proyek ini?
+    (Contoh: bank rugi karena banyak nasabah kabur, dll.)
+
+    JAWABAN:
+    Proyek ini bertujuan untuk memprediksi nasabah bank mana yang memiliki kemungkinan besar untuk berhenti (churn) menggunakan layanan bank tersebut. Bank akan mengalami kerugian jika banyak nasabah potensial dan setia berpindah ke bank lain.
+
+Q2. Kenapa masalah ini penting untuk diselesaikan?
+    (Dampaknya apa kalau dibiarkan?)
+
+    JAWABAN:
+    Sangat penting karena biaya untuk mendapatkan nasabah baru jauh lebih tinggi dibandingkan mempertahankan nasabah lama (customer retention). Dengan mengetahui nasabah yang berisiko churn, bank dapat mengambil tindakan pencegahan seperti memberikan promo khusus atau layanan personal agar mereka tetap bertahan.
+
+── SECTION 2: Dataset & EDA ─────────────────────────────
+Q3. Dari mana kamu dapat dataset-nya?
+    (Kaggle link / nama dataset / sumber lain)
+
+    JAWABAN:
+    Dataset yang digunakan adalah "Churn_Modelling.csv". Dataset semacam ini umumnya dapat ditemukan di platform seperti Kaggle dengan nama dataset "Bank Customer Churn".
+
+Q4. Berapa jumlah baris & kolom/fitur dataset-nya?
+
+    JAWABAN:  Baris: 10000  Kolom: 14
+
+Q5. Fitur apa saja yang ada di dataset?
+    (Sebutkan beberapa yang paling penting)
+
+    JAWABAN:
+    Beberapa fitur penting antara lain Geography (Negara), Gender, Age (Umur), CreditScore, Balance (Saldo), Tenure (Lama menjadi nasabah), NumOfProducts (Jumlah produk bank), HasCrCard, IsActiveMember, dan EstimatedSalary. Fitur targetnya adalah Exited (Churn).
+
+Q6. Temuan menarik apa yang kamu temukan saat eksplorasi data (EDA)?
+    (Contoh: ada kolom yang banyak missing value, distribusi tidak
+    seimbang, korelasi antar fitur, outlier, dll.)
+
+    JAWABAN:
+    Beberapa kolom seperti RowNumber, CustomerId, dan Surname tidak memiliki korelasi dengan kemungkinan churn sehingga harus dihapus. Fitur kategori (Geography dan Gender) harus diproses menggunakan Label Encoding dan One-Hot Encoding agar dapat dimengerti oleh model jaringan saraf tiruan (ANN). Data numerik juga harus diskalakan (StandardScaler) karena perbedaan rentang nilai (misalnya Age vs Balance).
+
+── SECTION 3: Methodology & Modeling ───────────────────
+Q7. Algoritma/model apa yang kamu pakai? Kenapa pilih itu?
+
+    JAWABAN:
+    Menggunakan Artificial Neural Network (ANN) atau Jaringan Saraf Tiruan. ANN sangat baik dalam menangkap pola kompleks dan non-linear dari data tabular seperti interaksi antara usia, saldo, dan jumlah produk terhadap kemungkinan nasabah untuk churn.
+
+Q8. Bagaimana struktur model-nya?
+    (Berapa layer? Fungsi aktivasi apa? Optimizer apa?)
+
+    JAWABAN:
+    Model Sequential terdiri dari 3 layer:
+    - Hidden Layer 1: 64 neuron (Fungsi aktivasi ReLU)
+    - Hidden Layer 2: 32 neuron (Fungsi aktivasi ReLU)
+    - Output Layer: 1 neuron (Fungsi aktivasi Sigmoid untuk output probabilitas biner).
+    Optimizer menggunakan Adam (learning_rate=0.01) dan Loss function menggunakan Binary Crossentropy.
+
+Q9. Berapa hasil akurasi / metric evaluasi model-mu?
+    (Accuracy, F1-Score, AUC-ROC, MAE, RMSE, R², dll.)
+
+    JAWABAN:
+    Model dievaluasi menggunakan metrik Accuracy (Akurasi) dan Loss. Umumnya untuk dataset standar ini, model ANN menghasilkan akurasi evaluasi sekitar 85-86%.
+
+Q10. Apakah ada tantangan teknis yang kamu hadapi?
+     (Contoh: overfitting, data imbalance, dll. dan cara mengatasinya)
+
+     JAWABAN:
+     Tantangan dalam melatih ANN adalah menentukan jumlah epoch, arsitektur layer, serta mencegah model menghafal data train (overfitting). Hal ini diatasi dengan mengimplementasikan callback EarlyStopping (patience=10) untuk menghentikan training saat val_loss tidak lagi membaik dan me-restore best weights, serta menggunakan TensorBoard untuk memonitor metrik secara visual.
+
+── SECTION 4: Impact & Insights ────────────────────────
+Q11. Apa output/hasil yang ditampilkan di aplikasi Streamlit-mu?
+     (Apa yang bisa dilakukan user di app?)
+
+     JAWABAN:
+     Aplikasi Streamlit menampilkan interaksi di mana user dapat menginput data profil nasabah (seperti negara, umur, saldo, skor kredit, dll). Hasil yang ditampilkan adalah persentase probabilitas Churn (keluar dari bank). Jika probabilitas > 0.5 (50%), maka akan muncul peringatan bahwa nasabah tersebut kemungkinan akan churn.
+
+Q12. Apa insight atau kesimpulan paling penting dari proyek ini?
+
+     JAWABAN:
+     Profil nasabah seperti usia, negara asal, status keanggotaan aktif, dan saldo sangat mempengaruhi keputusan mereka untuk tetap tinggal di bank. Model ANN dapat menjadi alat bantu otomatis bagi pihak manajemen bank untuk mendeteksi dini nasabah berisiko dan melakukan intervensi sebelum terlambat.
+
+
+╔══════════════════════════════════════════════════════════╗
+║  PROJECT 2 — Customer Salary Prediction 💵              ║
+║  (ANN · Regression)                                     ║
+╚══════════════════════════════════════════════════════════╝
+
+── SECTION 1: Background & Problem ──────────────────────
+Q1. Apa masalah nyata yang ingin diselesaikan proyek ini?
+
+    JAWABAN:
+    Proyek ini bertujuan untuk memprediksi atau memperkirakan nilai gaji/pendapatan (Estimated Salary) dari nasabah bank berdasarkan profil demografi, status finansial di bank, dan pola aktivitas mereka.
+
+Q2. Kenapa masalah ini penting untuk diselesaikan?
+
+    JAWABAN:
+    Mengetahui estimasi gaji sangat penting bagi bank untuk menawarkan produk finansial yang tepat sasaran (misal penawaran kredit rumah, upgrade kartu kredit, atau produk investasi) sesuai dengan kapasitas finansial nasabah, tanpa perlu terus meminta slip gaji atau dokumen pendapatan secara manual yang dapat merepotkan nasabah.
+
+── SECTION 2: Dataset & EDA ─────────────────────────────
+Q3. Dari mana kamu dapat dataset-nya?
+
+    JAWABAN:
+    Dataset yang digunakan sama dengan proyek pertama yaitu dataset pelanggan bank "Churn_Modelling.csv" (bisa diakses di Kaggle).
+
+Q4. Berapa jumlah baris & kolom/fitur dataset-nya?
+
+    JAWABAN:  Baris: 10000  Kolom: 14
+
+Q5. Fitur apa saja yang ada di dataset?
+
+    JAWABAN:
+    Fitur yang digunakan hampir sama dengan sebelumnya (Geography, Gender, Age, Tenure, Balance, CreditScore, NumOfProducts, HasCrCard, dan IsActiveMember). Namun, pada kasus ini, 'Exited' (Churn) dijadikan sebagai salah satu fitur input untuk memprediksi fitur target yaitu 'EstimatedSalary'.
+
+Q6. Temuan menarik apa yang kamu temukan saat EDA?
+
+    JAWABAN:
+    Untuk model regresi ini, fitur target (EstimatedSalary) berupa angka berkelanjutan (continuous). Kolom 'Exited' yang sebelumnya menjadi target klasifikasi, kini digunakan sebagai salah satu fitur prediktor. Selain itu, tahap preprocessing mengharuskan penggunaan StandardScaler secara menyeluruh karena sensitivitas model ANN terhadap skala angka target dan fitur (gaji bisa ratusan ribu dolar).
+
+── SECTION 3: Methodology & Modeling ───────────────────
+Q7. Algoritma/model apa yang kamu pakai? Kenapa pilih itu?
+
+    JAWABAN:
+    Menggunakan model regresi Artificial Neural Network (ANN). Model deep learning ini cocok untuk merekam korelasi rumit dan non-linear antar banyak variabel input numerik maupun kategorikal yang memengaruhi angka gaji secara bersamaan.
+
+Q8. Bagaimana struktur model-nya?
+
+    JAWABAN:
+    Model Sequential dengan 3 layer:
+    - Hidden Layer 1: 64 neuron (Aktivasi ReLU)
+    - Hidden Layer 2: 32 neuron (Aktivasi ReLU)
+    - Output Layer: 1 neuron (Tanpa fungsi aktivasi tambahan karena ini adalah tugas regresi untuk memprediksi nilai linear/angka eksak).
+    Optimizer menggunakan Adam dan Loss function menggunakan Mean Absolute Error (MAE).
+
+Q9. Berapa hasil metric evaluasi model-mu?
+    (MAE, RMSE, R², dll. — karena ini regression)
+
+    JAWABAN:
+    Model regresi dievaluasi menggunakan metrik Mean Absolute Error (MAE) yang secara harfiah menghitung rata-rata kesalahan/simpangan prediksi gaji dalam satuan aslinya (dolar/mata uang).
+
+Q10. Apakah ada tantangan teknis yang kamu hadapi?
+
+     JAWABAN:
+     Tantangan utamanya adalah sulitnya membuat prediksi nilai angka eksak (regresi) pada rentang gaji yang sangat lebar atau variatif. Masalah ini dan potensi overfitting diatasi dengan menggunakan callback Early Stopping (memantau val_loss) sehingga pembobotan di-restore ke performa terbaik selama training, serta penggunaan TensorBoard untuk visualisasi metrik.
+
+── SECTION 4: Impact & Insights ────────────────────────
+Q11. Apa output/hasil yang ditampilkan di aplikasi Streamlit-mu?
+
+     JAWABAN:
+     User memasukkan profil dan data riwayat bank nasabah melalui slider dan opsi dropdown (seperti Umur, Saldo, Status Keluar, Skor Kredit, dll). Aplikasi kemudian menjalankan input tersebut ke dalam model regresi ANN dan langsung menampilkan output angka berupa taksiran nilai Estimated Salary (estimasi gaji) dalam satuan dolar secara real-time.
+
+Q12. Apa insight atau kesimpulan paling penting dari proyek ini?
+
+     JAWABAN:
+     Informasi demografi dan aktivitas perbankan nasabah seperti umur, saldo tabungan, dan kepemilikan produk bank ternyata dapat digunakan sebagai alat untuk memperkirakan daya beli atau besaran penghasilan bulanan nasabah. Ini membuktikan bahwa jejak aktivitas finansial bisa memberikan cerminan kuat terhadap gaji, yang sangat berguna bagi bank dalam melakukan targeted marketing (pemasaran tertarget).
