@@ -47,10 +47,10 @@ export default function ProjectsSection() {
         {/* ── Project Cards ───────────────────────────────────────────── */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((proj, idx) => (
-            <div
-              key={proj.id}
-              className={`proj-card fade-up fade-delay-${Math.min(idx + 1, 7)} bg-slate-900/40 p-6 rounded-xl border border-slate-800 hover:border-emerald-500/40 flex flex-col justify-between`}
-            >
+            <div key={proj.id} className={`fade-up fade-delay-${Math.min(idx + 1, 7)} h-full`}>
+              <div
+                className={`proj-card bg-slate-900/40 p-6 h-full rounded-xl border border-slate-800 hover:border-emerald-500/40 flex flex-col justify-between`}
+              >
               {/* Icon + Badge */}
               <div>
                 <div className="flex items-start justify-between mb-4">
@@ -97,6 +97,7 @@ export default function ProjectsSection() {
                   <ExternalLink size={14} /> Live Demo
                 </a>
               </div>
+            </div>
             </div>
           ))}
         </div>

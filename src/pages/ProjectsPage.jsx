@@ -126,11 +126,12 @@ export default function ProjectsPage() {
 /* ── Individual Project Card (Google Classroom style) ────────────────────── */
 function ProjectCard({ proj, idx }) {
   return (
-    <Link
-      to={`/projects/${proj.slug}`}
-      id={`project-card-${proj.slug}`}
-      className={`proj-card fade-up fade-delay-${Math.min(idx + 1, 7)} bg-slate-900/40 rounded-2xl border border-slate-800 hover:border-emerald-500/50 flex flex-col overflow-hidden group`}
-    >
+    <div className={`fade-up fade-delay-${Math.min(idx + 1, 7)} h-full`}>
+      <Link
+        to={`/projects/${proj.slug}`}
+        id={`project-card-${proj.slug}`}
+        className={`proj-card bg-slate-900/40 h-full rounded-2xl border border-slate-800 hover:border-emerald-500/50 flex flex-col overflow-hidden group`}
+      >
       {/* ── Top Banner (Category) ──────────────────────────────────── */}
       <div className={`relative h-20 bg-gradient-to-r ${proj.categoryColor} flex items-center px-5 overflow-hidden`}>
         <div className="absolute inset-0 opacity-10"
@@ -181,5 +182,6 @@ function ProjectCard({ proj, idx }) {
         </div>
       </div>
     </Link>
+    </div>
   );
 }
