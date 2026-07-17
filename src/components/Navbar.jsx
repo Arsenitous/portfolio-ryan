@@ -1,31 +1,22 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Terminal, ChevronDown, User, Code2 } from 'lucide-react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [aboutOpen, setAboutOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   // "About" dropdown is "active" if on /about or /skills
-  const aboutActive =
-    location.pathname === '/about' || location.pathname === '/skills';
-
-  const topLinks = [
-    { to: '/',         label: 'Home' },
-    { to: '/projects', label: 'Projects' },
-    { to: '/contact',  label: 'Contact' },
-  ];
-
-  const aboutDropdown = [
-    { to: '/about',  label: 'Profile',            icon: <User size={13} /> },
-    { to: '/skills', label: 'Skills & Technology', icon: <Code2 size={13} /> },
-  ];
+  const aboutActive = pathname === '/about' || pathname === '/skills';
 
   return (
     <nav className="p-5 bg-[#0f172a]/80 backdrop-blur-md sticky top-0 z-50 flex justify-between items-center border-b border-slate-800 px-6 md:px-12">
       {/* Logo */}
       <Link
-        to="/"
+        href="/"
         className="text-xl font-bold tracking-wider text-emerald-400 flex items-center gap-2 hover:text-emerald-300 transition"
       >
         <Terminal size={22} /> RYAN FEBRIANTO
@@ -35,17 +26,16 @@ export default function Navbar() {
       <div className="flex items-center gap-6 md:gap-8 text-sm font-medium">
 
         {/* Home */}
-        <NavLink
-          to="/"
-          end
-          className={({ isActive }) =>
-            isActive
+        <Link
+          href="/"
+          className={
+            pathname === '/'
               ? 'text-emerald-400 font-semibold'
               : 'text-slate-400 hover:text-emerald-400 transition'
           }
         >
           Home
-        </NavLink>
+        </Link>
 
         {/* About Me — dropdown */}
         <div
@@ -75,49 +65,50 @@ export default function Navbar() {
               : 'opacity-0 -translate-y-1 pointer-events-none'
           }`}>
             <div className="bg-slate-900/95 backdrop-blur-md border border-slate-800 rounded-xl shadow-2xl shadow-black/40 overflow-hidden">
-              {aboutDropdown.map(({ to, label, icon }) => (
-                <NavLink
-                  key={to}
-                  to={to}
-                  className={({ isActive }) =>
-                    `flex items-center gap-2.5 px-4 py-3 text-xs font-medium transition-colors ${
-                      isActive
-                        ? 'bg-emerald-500/10 text-emerald-400'
-                        : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200'
-                    }`
-                  }
+              {[
+                { href: '/about',  label: 'Profile',            icon: <User size={13} /> },
+                { href: '/skills', label: 'Skills & Technology', icon: <Code2 size={13} /> },
+              ].map(({ href, label, icon }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`flex items-center gap-2.5 px-4 py-3 text-xs font-medium transition-colors ${
+                    pathname === href
+                      ? 'bg-emerald-500/10 text-emerald-400'
+                      : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200'
+                  }`}
                 >
                   <span className="text-emerald-400/70">{icon}</span>
                   {label}
-                </NavLink>
+                </Link>
               ))}
             </div>
           </div>
         </div>
 
         {/* Projects */}
-        <NavLink
-          to="/projects"
-          className={({ isActive }) =>
-            isActive
+        <Link
+          href="/projects"
+          className={
+            pathname === '/projects' || pathname.startsWith('/projects/')
               ? 'text-emerald-400 font-semibold'
               : 'text-slate-400 hover:text-emerald-400 transition'
           }
         >
           Projects
-        </NavLink>
+        </Link>
 
         {/* Contact */}
-        <NavLink
-          to="/contact"
-          className={({ isActive }) =>
-            isActive
+        <Link
+          href="/contact"
+          className={
+            pathname === '/contact'
               ? 'text-emerald-400 font-semibold'
               : 'text-slate-400 hover:text-emerald-400 transition'
           }
         >
           Contact
-        </NavLink>
+        </Link>
 
       </div>
     </nav>

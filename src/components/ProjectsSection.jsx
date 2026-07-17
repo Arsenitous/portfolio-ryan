@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Database, ExternalLink } from 'lucide-react';
 import { GithubIcon } from './icons';

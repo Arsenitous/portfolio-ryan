@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Briefcase, Gamepad2, ExternalLink, Crown, Waves } from 'lucide-react';
 import { workExperience, hobbies } from '../data';

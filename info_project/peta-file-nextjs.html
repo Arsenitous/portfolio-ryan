@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peta File Next.js — Ryan Febrianto Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --emerald: #34d399;
+      --teal: #2dd4bf;
+      --navy: #0f172a;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --white: #f8fafc;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 32px;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #134e4a 100%);
+      padding: 48px 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(52,211,153,0.15), transparent);
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 20%;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45,212,191,0.1), transparent);
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(52,211,153,0.15);
+      border: 1px solid rgba(52,211,153,0.3);
+      color: #34d399;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .header h1 span {
+      background: linear-gradient(90deg, #34d399, #2dd4bf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header p {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 580px;
+      position: relative;
+      z-index: 1;
+    }
+    .header-meta {
+      display: flex;
+      gap: 20px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .header-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #34d399;
+    }
+
+    /* ── Body ── */
+    .body {
+      padding: 40px 48px 48px;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 36px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .section-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .section-desc {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    /* ── Table ── */
+    .table-wrap {
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead tr {
+      background: #f8fafc;
+    }
+    thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #64748b;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    tbody tr {
+      border-bottom: 1px solid #f1f5f9;
+      transition: background 0.15s;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f8fafc; }
+    td {
+      padding: 13px 16px;
+      vertical-align: middle;
+    }
+    .label {
+      font-weight: 600;
+      color: #1e293b;
+    }
+    .label .sub {
+      font-size: 11px;
+      font-weight: 400;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    .path {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: #0f172a;
+      background: #f1f5f9;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      display: inline-block;
+    }
+    .path .dir { color: #64748b; }
+    .path .file { color: #059669; font-weight: 600; }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+    }
+    .badge-page { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+    .badge-comp { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+    .badge-data { background: #fdf4ff; color: #9333ea; border: 1px solid #e9d5ff; }
+    .badge-config { background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; }
+
+    /* ── Tip box ── */
+    .tip-box {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: linear-gradient(135deg, #ecfdf5, #f0fdfa);
+      border: 1px solid #a7f3d0;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-top: 16px;
+    }
+    .tip-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .tip-content strong {
+      font-size: 13px;
+      font-weight: 700;
+      color: #065f46;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .tip-content p {
+      font-size: 12px;
+      color: #047857;
+      line-height: 1.6;
+    }
+    .tip-content code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(5,150,105,0.1);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+
+    .warn-box {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-top: 12px;
+    }
+    .warn-content strong {
+      font-size: 13px;
+      font-weight: 700;
+      color: #9a3412;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .warn-content p {
+      font-size: 12px;
+      color: #c2410c;
+      line-height: 1.6;
+    }
+    .warn-content code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(234,88,12,0.1);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+      margin: 32px 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-left {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    .footer-left strong {
+      color: #64748b;
+      font-weight: 600;
+    }
+    .footer-right {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #cbd5e1;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; max-width: 100%; }
+      .print-btn { display: none; }
+    }
+
+    /* ── Print button ── */
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #34d399, #2dd4bf);
+      color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(52,211,153,0.4);
+      transition: all 0.2s;
+      z-index: 999;
+    }
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(52,211,153,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-badge">📁 Next.js Project Guide</div>
+      <h1>Peta File <span>Next.js</span><br/>Portfolio Ryan Febrianto</h1>
+      <p>Panduan lengkap file mana yang harus diedit untuk mengubah konten, tampilan, atau data di website portfolio kamu yang sudah berjalan di Next.js App Router.</p>
+      <div class="header-meta">
+        <div class="header-meta-item"><span class="dot"></span> Next.js 16 (App Router)</div>
+        <div class="header-meta-item"><span class="dot"></span> Tailwind CSS v4</div>
+        <div class="header-meta-item"><span class="dot"></span> Deployed on Vercel</div>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+
+      <!-- SECTION 1: Pages -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#ecfdf5;">📄</div>
+          <div>
+            <div class="section-title">Halaman (Pages)</div>
+            <div class="section-desc">Edit file ini untuk mengubah konten atau tampilan masing-masing halaman</div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Halaman</th>
+                <th>URL</th>
+                <th>File yang Diedit</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="label">Home<div class="sub">Halaman utama / landing</div></div></td>
+                <td><code style="font-family:monospace;font-size:12px;color:#64748b;">/</code></td>
+                <td><span class="path"><span class="dir">src/app/</span><span class="file">page.jsx</span></span></td>
+                <td><span class="badge badge-page">Page</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">About<div class="sub">Profil, pendidikan, pengalaman</div></div></td>
+                <td><code style="font-family:monospace;font-size:12px;color:#64748b;">/about</code></td>
+                <td><span class="path"><span class="dir">src/app/about/</span><span class="file">page.jsx</span></span></td>
+                <td><span class="badge badge-page">Page</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">Skills<div class="sub">Skill & teknologi</div></div></td>
+                <td><code style="font-family:monospace;font-size:12px;color:#64748b;">/skills</code></td>
+                <td><span class="path"><span class="dir">src/app/skills/</span><span class="file">page.jsx</span></span></td>
+                <td><span class="badge badge-page">Page</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">Projects<div class="sub">Daftar semua proyek</div></div></td>
+                <td><code style="font-family:monospace;font-size:12px;color:#64748b;">/projects</code></td>
+                <td><span class="path"><span class="dir">src/app/projects/</span><span class="file">page.jsx</span></span></td>
+                <td><span class="badge badge-page">Page</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">Project Detail<div class="sub">Detail satu proyek</div></div></td>
+                <td><code style="font-family:monospace;font-size:12px;color:#64748b;">/projects/:slug</code></td>
+                <td><span class="path"><span class="dir">src/app/projects/[slug]/</span><span class="file">page.jsx</span></span></td>
+                <td><span class="badge badge-page">Page</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">Contact<div class="sub">Form & sosial media</div></div></td>
+                <td><code style="font-family:monospace;font-size:12px;color:#64748b;">/contact</code></td>
+                <td><span class="path"><span class="dir">src/app/contact/</span><span class="file">page.jsx</span></span></td>
+                <td><span class="badge badge-page">Page</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- SECTION 2: Components -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#eff6ff;">🧩</div>
+          <div>
+            <div class="section-title">Komponen (Components)</div>
+            <div class="section-desc">Bagian UI yang dapat dipakai ulang di beberapa halaman</div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Komponen</th>
+                <th>Fungsi</th>
+                <th>File</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="label">Navbar</div></td>
+                <td style="color:#64748b;font-size:12px;">Menu navigasi bagian atas</td>
+                <td><span class="path"><span class="dir">src/components/</span><span class="file" style="color:#2563eb;">Navbar.jsx</span></span></td>
+                <td><span class="badge badge-comp">Component</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">HeroSection</div></td>
+                <td style="color:#64748b;font-size:12px;">Foto + intro di halaman Home</td>
+                <td><span class="path"><span class="dir">src/components/</span><span class="file" style="color:#2563eb;">HeroSection.jsx</span></span></td>
+                <td><span class="badge badge-comp">Component</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">SkillsPreviewSection</div></td>
+                <td style="color:#64748b;font-size:12px;">Preview skills di halaman Home</td>
+                <td><span class="path"><span class="dir">src/components/</span><span class="file" style="color:#2563eb;">SkillsPreviewSection.jsx</span></span></td>
+                <td><span class="badge badge-comp">Component</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">AboutSection</div></td>
+                <td style="color:#64748b;font-size:12px;">Pengalaman kerja di halaman Home</td>
+                <td><span class="path"><span class="dir">src/components/</span><span class="file" style="color:#2563eb;">AboutSection.jsx</span></span></td>
+                <td><span class="badge badge-comp">Component</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">ContactSection</div></td>
+                <td style="color:#64748b;font-size:12px;">Sosial media di halaman Home</td>
+                <td><span class="path"><span class="dir">src/components/</span><span class="file" style="color:#2563eb;">ContactSection.jsx</span></span></td>
+                <td><span class="badge badge-comp">Component</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- SECTION 3: Data -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#fdf4ff;">📊</div>
+          <div>
+            <div class="section-title">Data</div>
+            <div class="section-desc">Edit file ini untuk memperbarui informasi tanpa menyentuh tampilan</div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Isi</th>
+                <th>File</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="label">Info Pribadi</div></td>
+                <td style="color:#64748b;font-size:12px;">Nama, TTL, gender, agama, dll</td>
+                <td><span class="path"><span class="dir">src/data/</span><span class="file" style="color:#9333ea;">personal.js</span></span></td>
+                <td><span class="badge badge-data">Data</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">Daftar Proyek</div></td>
+                <td style="color:#64748b;font-size:12px;">Semua proyek + detail case study</td>
+                <td><span class="path"><span class="dir">src/data/</span><span class="file" style="color:#9333ea;">projects.jsx</span></span></td>
+                <td><span class="badge badge-data">Data</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">Skills & Teknologi</div></td>
+                <td style="color:#64748b;font-size:12px;">Kategori skill dan daftar tools</td>
+                <td><span class="path"><span class="dir">src/data/</span><span class="file" style="color:#9333ea;">skills.js</span></span></td>
+                <td><span class="badge badge-data">Data</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">Pendidikan</div></td>
+                <td style="color:#64748b;font-size:12px;">Riwayat pendidikan</td>
+                <td><span class="path"><span class="dir">src/data/</span><span class="file" style="color:#9333ea;">education.js</span></span></td>
+                <td><span class="badge badge-data">Data</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">Pengalaman Kerja</div></td>
+                <td style="color:#64748b;font-size:12px;">Riwayat pekerjaan / magang</td>
+                <td><span class="path"><span class="dir">src/data/</span><span class="file" style="color:#9333ea;">experience.js</span></span></td>
+                <td><span class="badge badge-data">Data</span></td>
+              </tr>
+              <tr>
+                <td><div class="label">Hobi</div></td>
+                <td style="color:#64748b;font-size:12px;">Daftar hobi & deskripsi</td>
+                <td><span class="path"><span class="dir">src/data/</span><span class="file" style="color:#9333ea;">hobbies.js</span></span></td>
+                <td><span class="badge badge-data">Data</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- SECTION 4: Config -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#fff7ed;">⚙️</div>
+          <div>
+            <div class="section-title">Global & Konfigurasi</div>
+            <div class="section-desc">Setting global yang mempengaruhi seluruh website</div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>Fungsi</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="path"><span class="dir">src/app/</span><span class="file" style="color:#ea580c;">layout.jsx</span></span></td>
+                <td style="color:#64748b;font-size:12px;">Template HTML utama, judul tab browser, meta SEO</td>
+                <td><span class="badge badge-config">Config</span></td>
+              </tr>
+              <tr>
+                <td><span class="path"><span class="dir">src/app/</span><span class="file" style="color:#ea580c;">globals.css</span></span></td>
+                <td style="color:#64748b;font-size:12px;">CSS global: animasi fade-up, scroll behavior, fonts</td>
+                <td><span class="badge badge-config">Config</span></td>
+              </tr>
+              <tr>
+                <td><span class="path"><span class="file" style="color:#ea580c;">next.config.mjs</span></span></td>
+                <td style="color:#64748b;font-size:12px;">Konfigurasi Next.js (image domain, plugin, dll)</td>
+                <td><span class="badge badge-config">Config</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tip Box -->
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div class="tip-content">
+          <strong>Tip: Tambah Proyek Baru</strong>
+          <p>Untuk menambahkan proyek baru, kamu hanya perlu mengedit <code>src/data/projects.jsx</code> saja. Tidak perlu menyentuh file halaman sama sekali — data akan otomatis muncul di halaman <code>/projects</code> dan detail proyeknya.</p>
+        </div>
+      </div>
+
+      <div class="warn-box">
+        <div class="tip-icon">⚠️</div>
+        <div class="tip-content">
+          <strong>Jangan lupa tambahkan .next/ ke .gitignore</strong>
+          <p>Folder <code>.next/</code> adalah build cache yang digenerate otomatis oleh Next.js. Sebaiknya ditambahkan ke <code>.gitignore</code> agar tidak ikut ter-push ke GitHub setiap kali kamu build.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-left">
+        Panduan untuk <strong>Ryan Febrianto Portfolio</strong> · Dimigrasi ke Next.js 16 (App Router) · 2026
+      </div>
+      <div class="footer-right">next.js · tailwind · vercel</div>
+    </div>
+
+  </div>
+
+  <!-- Print Button -->
+  <button class="print-btn" onclick="window.print()">
+    🖨️ Simpan sebagai PDF
+  </button>
+
+</body>
+</html>

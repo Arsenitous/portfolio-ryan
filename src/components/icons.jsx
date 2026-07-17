@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 export const FacebookIcon = ({ size = 24, className = "" }) => (

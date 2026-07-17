@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import { User, ArrowRight, BarChart3 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
 import { personalInfo } from '../data';
 import ryanPhoto from '../assets/Ryan-W (2).png';
 
@@ -35,7 +38,7 @@ export default function HeroSection() {
           {/* ── High-Visibility CTA ──────────────────────────────────── */}
           <div className="pt-2 flex flex-wrap gap-4">
             <Link
-              to="/projects"
+              href="/projects"
               id="cta-explore-projects"
               className="group inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold px-7 py-3.5 rounded-xl text-sm transition-all shadow-lg shadow-emerald-500/30 hover:shadow-emerald-400/40 hover:-translate-y-0.5"
             >
@@ -51,10 +54,12 @@ export default function HeroSection() {
           {/* Photo */}
           <div className="relative">
             <div className="w-52 h-52 rounded-full ring-4 ring-emerald-400/70 ring-offset-4 ring-offset-slate-950 overflow-hidden shadow-2xl shadow-emerald-500/30">
-              <img
+              <Image
                 src={ryanPhoto}
                 alt="Ryan Febrianto"
                 className="w-full h-full object-cover object-top"
+                width={208}
+                height={208}
               />
             </div>
             {/* Online dot */}

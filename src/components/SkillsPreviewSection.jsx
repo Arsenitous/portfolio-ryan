@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Code2, ArrowRight } from 'lucide-react';
 import { featuredSkills } from '../data';
 
@@ -48,7 +50,7 @@ export default function SkillsPreviewSection() {
 
             {/* CTA */}
             <Link
-              to="/skills"
+              href="/skills"
               id="cta-view-all-skills"
               className="group inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-lg shadow-emerald-500/25 hover:-translate-y-0.5 hover:shadow-emerald-400/40"
             >
@@ -86,7 +88,7 @@ export default function SkillsPreviewSection() {
             {/* More hint */}
             <p className="text-xs text-slate-600 font-mono mt-3 text-right">
               +{Math.max(0, 33 - featuredSkills.length)} more skills →{' '}
-              <Link to="/skills" className="text-emerald-500 hover:text-emerald-400 transition">
+              <Link href="/skills" className="text-emerald-500 hover:text-emerald-400 transition">
                 see all
               </Link>
             </p>
