@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   Phone, Mail, Send, MessageSquare,
   ChevronRight, User, AtSign, FileText,
-  CheckCircle2
+  CheckCircle2, Download
 } from 'lucide-react';
 import { FacebookIcon, InstagramIcon, GmailIcon, LinkedInIcon } from '../../components/icons';
 import Navbar from '../../components/Navbar';
@@ -145,6 +145,37 @@ export default function ContactPage() {
                   </div>
                 </a>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Download CV ───────────────────────────────────────── */}
+        <section className="py-12 px-6 border-b border-slate-800">
+          <div className="max-w-4xl mx-auto">
+            <div className="fade-up bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-slate-900/60 border border-emerald-500/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="space-y-2 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-md text-xs font-mono mb-1">
+                  <FileText size={14} /> My Resume
+                </div>
+                <h2 className="text-xl font-extrabold text-white">
+                  Download My{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
+                    CV
+                  </span>
+                </h2>
+                <p className="text-slate-400 text-sm">
+                  ATS-friendly resume in English. Updated July 2026.
+                </p>
+              </div>
+              <a
+                href="/CV-Ryan-Febrianto.pdf"
+                download="CV-Ryan-Febrianto.pdf"
+                id="btn-download-cv"
+                className="group flex-shrink-0 inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl text-sm transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-400/30 hover:-translate-y-0.5"
+              >
+                <Download size={17} className="transition-transform group-hover:-translate-y-0.5" />
+                Download CV (PDF)
+              </a>
             </div>
           </div>
         </section>

@@ -88,7 +88,7 @@ export default function AboutPage() {
                 <div className="relative w-full flex justify-center">
                   {/* Glow ring */}
                   <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 blur-xl" />
-                  <div className="relative w-80 md:w-96 rounded-2xl overflow-hidden ring-2 ring-emerald-400/30 shadow-2xl shadow-emerald-500/20">
+                  <div className="relative w-full max-w-xs md:max-w-sm rounded-2xl overflow-hidden ring-2 ring-emerald-400/30 shadow-2xl shadow-emerald-500/20">
                     <Image
                       src={ryanPhoto}
                       alt="Ryan Febrianto"
@@ -101,7 +101,7 @@ export default function AboutPage() {
                 {/* Contact CTA Button */}
                 <Link
                   href="/contact"
-                  className="mt-8 w-80 md:w-96 flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-sm font-bold py-3 rounded-2xl transition-all hover:-translate-y-0.5 shadow-lg shadow-emerald-500/25"
+                  className="mt-4 w-full max-w-xs md:max-w-sm flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-sm font-bold py-3 rounded-2xl transition-all hover:-translate-y-0.5 shadow-lg shadow-emerald-500/25"
                 >
                   <Mail size={15} />
                   Contact Me
