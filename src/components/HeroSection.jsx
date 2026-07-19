@@ -34,7 +34,7 @@ export default function HeroSection() {
         {/* ── Left: Intro text ─────────────────────────────────────────── */}
         <div className="md:col-span-2 space-y-5 fade-up text-center md:text-left">
           <div className="inline-block bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-md text-xs font-mono">
-            🚀 Available for Data Analyst Roles
+            🚀 Available for Data Analyst & Data Science Roles
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
@@ -46,7 +46,7 @@ export default function HeroSection() {
 
           <p className="text-slate-400 text-base md:text-lg leading-relaxed">
             An IT practitioner focused on{' '}
-            <strong className="text-emerald-300">Data Analytics</strong>. Passionate about
+            <strong className="text-emerald-300">Data Analytics & Data Science</strong>. Passionate about
             transforming raw data into meaningful visual insights, and building intelligent
             web applications using Python and Streamlit.
           </p>
